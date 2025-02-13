@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"devops-go/internal/services"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -17,7 +18,7 @@ func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 
 	// Создаём JSON-ответ
-	response := Response{Message: "Hello world!"}
+	response := Response{Message: services.Hello()}
 
 	// Кодируем JSON и отправляем в response
 	if err := json.NewEncoder(w).Encode(response); err != nil {
